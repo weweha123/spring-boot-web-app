@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Інформація про запис</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .button-group {
+            margin-top: 20px;
+        }
+        .button-group button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .button-group a {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .button-group button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Інформація про запис</h2>
+    <strong>Ім'я студента:</strong> <span th:text="${report.getStudentName()}"></span><br>
+    <strong>По батькові студента:</strong> <span th:text="${report.getStudentPatronymic()}"></span><br>
+    <strong>Оцінка:</strong> <span th:text="${report.getGrade()}"></span><br>
+    <div class="button-group">
+        <a th:href="@{/reports/{id}/edit(id=${report.id})}">Edit</a>
+        <form th:action="@{/reports/{id}/delete(id=${report.id})}" th:method="post">
+            <button type="submit">Видалити</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

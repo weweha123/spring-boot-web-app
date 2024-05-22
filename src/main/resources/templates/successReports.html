@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Звіти</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+<h2>Успішність студентів</h2>
+<a href="about">Про сайт</a>
+<a href="/reports/new">Додати звіт</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Імʼя студента</th>
+        <th>По батькові студента</th>
+        <th>Оцінка</th>
+        <th>Дата</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="report : ${successReports}" th:onclick="'window.location.href=\'/reports/' + ${report.getId()} + '\''">
+            <td th:text="${report.getId()}"></td>
+            <td th:text="${report.getStudentName()}"></td>
+            <td th:text="${report.getStudentPatronymic()}"></td>
+            <td th:text="${report.getGrade()}"></td>
+            <td th:text="${report.getReportDate()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
